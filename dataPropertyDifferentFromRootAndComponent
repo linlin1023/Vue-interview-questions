@@ -1,0 +1,8 @@
+question: Vue组件data选项为什么必须是个函数而Vue的根实例则没有此限制. 
+why vue component "data" option have to be a function versus Vue root instance have no such restriction?
+
+’Vue组件‘实际上是个构造函数（在Vue这个构造函数基础做扩展）
+在模版中使用‘Vue组件’元素才会生成真正的实例，
+假设我们把data选项设置成一个对象，所有的该组件实例都会共享这个对象，共享内存中同一块区域，因为这个实例对象已经创建好并在组件的构造函数中设值给data属性。
+
+Vue根实例是单个实例的创建，每次使用 new Vue({...})我在实际创建一个实例，所以不需要限制 data选项都传入函数，传入data是对象也可以，一个对象对应一个Vue实例
